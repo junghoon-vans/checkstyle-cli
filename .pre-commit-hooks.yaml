@@ -2,6 +2,5 @@
 - id: checkstyle
   name: checkstyle
   description: Runs Checkstyle
-  entry: pre_commit_hooks/checkstyle.py
+  entry: checkstyle
   language: python
-  types: [java]
