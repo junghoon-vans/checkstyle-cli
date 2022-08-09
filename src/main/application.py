@@ -21,8 +21,8 @@ class Application:
             'java', '-jar', 'checkstyle-10.3.2-all.jar',
             '-c', args.config,
         ]
-        filenames = args.filenames
-        subprocess.run(cmd + filenames)
+        files = args.files
+        subprocess.run(cmd + files)
 
     def parse_options(
         self, argv: Optional[Sequence[str]],

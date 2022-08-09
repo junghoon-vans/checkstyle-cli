@@ -11,7 +11,7 @@ def arg_parser() -> argparse.ArgumentParser:
         help="checkstyle configuration file",
     )
     parser.add_argument(
-        "filenames", nargs="*",
-        help="filenames for checkstyle",
+        "files", nargs="*",
+        help="files to verify",
     )
     return parser
