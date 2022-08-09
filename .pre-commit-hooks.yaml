@@ -1,0 +1,6 @@
+---
+- id: checkstyle
+  name: checkstyle
+  description: Runs Checkstyle
+  entry: checkstyle
+  language: python
