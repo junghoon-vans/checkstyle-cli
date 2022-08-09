@@ -18,12 +18,10 @@ class Application:
 
     def run_checkstyle(self, args: Namespace):
         version = args.version
-        utils.download_checkstyle(version)
+        filename = utils.download_checkstyle(version)
 
         cmd = [
-            'java', '-jar', 'checkstyle-{version}-all.jar'.format(
-                version=version,
-            ),
+            'java', '-jar', utils.get_checkstyle_cache(filename),
             '-c', args.config,
         ]
         files = args.files

@@ -28,7 +28,7 @@ def arg_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def download_checkstyle(version: str) -> None:
+def download_checkstyle(version: str) -> str:
     filename = get_checkstyle_filename(version)
     if not is_exist_file(filename):
         try:
@@ -36,10 +36,11 @@ def download_checkstyle(version: str) -> None:
             download(url=url, filename=filename)
         except requests.exceptions.HTTPError as e:
             print(e)
+    return filename
 
 
 def is_exist_file(filename: str) -> bool:
-    return os.path.exists(os.path.join(os.getcwd(), filename))
+    return os.path.exists(get_checkstyle_cache(filename))
 
 
 def get_checkstyle_download_url(version: str) -> str:
@@ -55,12 +56,19 @@ def get_checkstyle_filename(version: str) -> str:
     return filename
 
 
+def get_checkstyle_cache(filename: str) -> str:
+    cache_path = os.path.join(os.getcwd(), ".checkstyle_cache")
+    if not os.path.exists(cache_path):
+        os.makedirs(cache_path)
+    return os.path.join(cache_path, filename)
+
+
 def download(url: str, filename: str) -> None:
     r = requests.get(url + filename, stream=True)
     r.raise_for_status()
     total = int(r.headers.get('Content-Length', 0))
 
-    with open(os.path.join(os.getcwd(), filename), "wb") as f, tqdm(
+    with open(get_checkstyle_cache(filename), "wb") as f, tqdm(
         desc=filename,
         total=total,
         unit='iB',
