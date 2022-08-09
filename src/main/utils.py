@@ -2,6 +2,7 @@ import argparse
 import os
 
 import requests
+from tqdm import tqdm
 
 
 def arg_parser() -> argparse.ArgumentParser:
@@ -55,8 +56,18 @@ def get_checkstyle_filename(version: str) -> str:
 
 
 def download(url: str, filename: str) -> None:
-    r = requests.get(url + filename)
+    r = requests.get(url + filename, stream=True)
     r.raise_for_status()
+    total = int(r.headers.get('Content-Length', 0))
 
-    with open(os.path.join(os.getcwd(), filename), "wb") as f:
+    with open(os.path.join(os.getcwd(), filename), "wb") as f, tqdm(
+        desc=filename,
+        total=total,
+        unit='iB',
+        unit_scale=True,
+        unit_divisor=1024,
+    ) as bar:
         f.write(r.content)
+        for data in r.iter_content(chunk_size=1024):
+            size = f.write(data)
+            bar.update(size)
