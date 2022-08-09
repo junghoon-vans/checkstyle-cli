@@ -28,13 +28,17 @@ def arg_parser() -> argparse.ArgumentParser:
 
 
 def download_checkstyle(version: str) -> None:
-    try:
-        download(
-            url=get_checkstyle_download_url(version),
-            filename=get_checkstyle_filename(version),
-        )
-    except requests.exceptions.HTTPError as e:
-        print(e)
+    filename = get_checkstyle_filename(version)
+    if not is_exist_file(filename):
+        try:
+            url = get_checkstyle_download_url(version)
+            download(url=url, filename=filename)
+        except requests.exceptions.HTTPError as e:
+            print(e)
+
+
+def is_exist_file(filename: str) -> bool:
+    return os.path.exists(os.path.join(os.getcwd(), filename))
 
 
 def get_checkstyle_download_url(version: str) -> str:
