@@ -7,7 +7,7 @@ Usage
 ---
 
 ```bash
-python setup.py install
+pip install checkstyle-cli
 checkstyle -c /sun_checks.xml -v 10.3.2 .
 ```
 
