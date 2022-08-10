@@ -1,7 +1,7 @@
 bleach==5.0.1
 certifi==2022.6.15
 charset-normalizer==2.1.0
-checkstyle-cli==0.2.1
+checkstyle-cli==0.2.2
 commonmark==0.9.1
 docutils==0.19
 idna==3.3
