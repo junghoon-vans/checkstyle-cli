@@ -4,3 +4,4 @@
   description: Runs Checkstyle
   entry: checkstyle
   language: python
+  require_serial: true
