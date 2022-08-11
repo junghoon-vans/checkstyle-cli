@@ -1,7 +1,7 @@
 from typing import Optional
 from typing import Sequence
 
-from main import application
+from checkstyle.main import application
 
 
 def main(argv: Optional[Sequence[str]] = None):
