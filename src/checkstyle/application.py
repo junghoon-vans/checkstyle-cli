@@ -5,7 +5,7 @@ from typing import Optional
 from typing import Sequence
 from typing import Tuple
 
-from main import utils
+from checkstyle import utils
 
 
 class Application:
