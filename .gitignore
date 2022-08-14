@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,python
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,visualstudiocode,python
+# Created by https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,python,jetbrains
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,visualstudiocode,python,jetbrains
 
 ### Checkstyle ###
 .checkstyle_cache
@@ -224,4 +224,7 @@ cython_debug/
 # Ignore code-workspaces
 *.code-workspace
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,python
+### Jetbrains ###
+.idea/
+
+# End of https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode,python,jetbrains
