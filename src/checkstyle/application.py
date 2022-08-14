@@ -11,7 +11,7 @@ class Application:
         self._parser = utils.arg_parser()
 
     def run(self, argv: Optional[Sequence[str]]) -> int:
-        kwargs = self.parse_kargs(argv)
+        kwargs = self.parse_kwargs(argv)
 
         target = utils.download_checkstyle(kwargs.pop('version'))
         args = [
@@ -22,7 +22,7 @@ class Application:
         exit_code = utils.run_command(target, (args+files))
         return exit_code
 
-    def parse_kargs(self, argv: Optional[Sequence[str]]) -> Dict[str, Any]:
+    def parse_kwargs(self, argv: Optional[Sequence[str]]) -> Dict[str, Any]:
         args, unknown = self._parser.parse_known_args(argv)
         kwargs = vars(args)
         return kwargs
