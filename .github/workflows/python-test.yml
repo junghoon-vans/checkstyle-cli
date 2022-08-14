@@ -10,6 +10,7 @@ jobs:
     strategy:
       matrix:
         py:
+          - "3.7"
           - "3.8"
           - "3.9"
           - "3.10"
@@ -20,6 +21,9 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.py }}
+        cache: 'pip'
+        cache-dependency-path: |
+          requirements-dev.txt
     - name: Install dependencies
       run: python -m pip install --upgrade pip tox
     - name: Run tests

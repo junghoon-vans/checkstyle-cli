@@ -42,4 +42,4 @@ usage: checkstyle [-h] [-c CONFIG] [-v VERSION]
 License
 ---
 
-[MIT Licencse](https://github.com/junghoon-vans/checkstyle-cli/blob/main/LICENSE)
+[MIT License](https://github.com/junghoon-vans/checkstyle-cli/blob/main/LICENSE)
