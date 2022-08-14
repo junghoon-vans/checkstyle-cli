@@ -1,5 +1,3 @@
-from argparse import Namespace
-
 import pytest
 from checkstyle.application import Application
 
@@ -11,6 +9,6 @@ def application() -> Application:
 
 
 def test_parse_args(application: Application):
-    assert application.parse_args(None) == (
-        Namespace(config='/google_checks.xml', version='10.3.2', files=[]), [],
-    )
+    assert application.parse_kwargs(None) == {
+        'config': '/google_checks.xml', 'version': '10.3.2', 'files': [],
+    }
