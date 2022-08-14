@@ -1,6 +1,7 @@
 import argparse
 import os
 import subprocess
+from typing import List
 
 import requests
 from tqdm import tqdm
@@ -29,9 +30,11 @@ def arg_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def run_command(*command: str) -> int:
+def run_command(target: str, args: List[str]) -> int:
     result = subprocess.run(
-        args=command, capture_output=True, encoding="UTF-8",
+        ['java', '-jar', get_checkstyle_cache(target)] + args,
+        capture_output=True,
+        encoding="UTF-8",
     )
 
     output = result.stdout

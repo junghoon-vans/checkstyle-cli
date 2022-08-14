@@ -12,17 +12,14 @@ class Application:
 
     def run(self, argv: Optional[Sequence[str]]) -> int:
         kwargs = self.parse_kargs(argv)
-        exit_code = self.run_checkstyle(kwargs)
-        return exit_code
 
-    def run_checkstyle(self, kwargs: dict) -> int:
-        filename = utils.download_checkstyle(kwargs.pop('version'))
-        files = kwargs.pop('files')
-        cmd = [
-            'java', '-jar', utils.get_checkstyle_cache(filename),
+        target = utils.download_checkstyle(kwargs.pop('version'))
+        args = [
             '-c', kwargs.pop('config'),
         ]
-        exit_code = utils.run_command(*(cmd + files))
+        files = kwargs.pop('files')
+
+        exit_code = utils.run_command(target, (args+files))
         return exit_code
 
     def parse_kargs(self, argv: Optional[Sequence[str]]) -> Dict[str, Any]:
