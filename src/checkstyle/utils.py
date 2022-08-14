@@ -1,5 +1,6 @@
 import argparse
 import os
+import subprocess
 
 import requests
 from tqdm import tqdm
@@ -26,6 +27,25 @@ def arg_parser() -> argparse.ArgumentParser:
         help="files to verify",
     )
     return parser
+
+
+def run_command(*command: str) -> int:
+    result = subprocess.run(
+        args=command, capture_output=True, encoding="UTF-8",
+    )
+
+    output = result.stdout
+    exit_code = result.returncode
+
+    print(output)
+    if result.check_returncode is not None:
+        print(
+            "Process finished with exit code {exit_code}".format(
+                exit_code=exit_code,
+            ),
+        )
+
+    return exit_code
 
 
 def download_checkstyle(version: str) -> str:

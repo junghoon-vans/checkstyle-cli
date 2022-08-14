@@ -1,4 +1,3 @@
-import subprocess
 from argparse import Namespace
 from typing import List
 from typing import Optional
@@ -12,11 +11,12 @@ class Application:
     def __init__(self) -> None:
         self._parser = utils.arg_parser()
 
-    def run(self, argv: Optional[Sequence[str]]):
+    def run(self, argv: Optional[Sequence[str]]) -> int:
         args, unknown = self.parse_args(argv)
-        self.run_checkstyle(args)
+        exit_code = self.run_checkstyle(args)
+        return exit_code
 
-    def run_checkstyle(self, args: Namespace):
+    def run_checkstyle(self, args: Namespace) -> int:
         version = args.version
         filename = utils.download_checkstyle(version)
 
@@ -25,7 +25,8 @@ class Application:
             '-c', args.config,
         ]
         files = args.files
-        subprocess.run(cmd + files)
+        exit_code = utils.run_command(*(cmd + files))
+        return exit_code
 
     def parse_args(
         self, argv: Optional[Sequence[str]],
