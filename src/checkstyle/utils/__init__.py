@@ -1,33 +1,9 @@
-import argparse
 import os
 import subprocess
 from typing import List
 
 import requests
 from tqdm import tqdm
-
-
-def arg_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "-c",
-        "--config",
-        type=str,
-        default="/google_checks.xml",
-        help="checkstyle configuration file",
-    )
-    parser.add_argument(
-        "-v",
-        "--version",
-        type=str,
-        default="10.3.2",
-        help="checkstyle version",
-    )
-    parser.add_argument(
-        "files", nargs="*",
-        help="files to verify",
-    )
-    return parser
 
 
 def run_command(target: str, args: List[str]) -> int:
