@@ -1,33 +1,25 @@
-import subprocess
-from argparse import Namespace
-from typing import List
 from typing import Optional
 from typing import Sequence
-from typing import Tuple
 
-from checkstyle import utils
+from checkstyle.utils import run_command
+from checkstyle.utils.parser import Parser
+from checkstyle.utils.store import Store
 
 
 class Application:
     def __init__(self) -> None:
-        self._parser = utils.arg_parser()
+        self._parser = Parser()
+        self._store = Store()
 
-    def run(self, argv: Optional[Sequence[str]]):
-        args, unknown = self.parse_args(argv)
-        self.run_checkstyle(args)
+    def run(self, argv: Optional[Sequence[str]]) -> int:
+        args_dict = self._parser.parse_args_dict(argv)
 
-    def run_checkstyle(self, args: Namespace):
-        version = args.version
-        filename = utils.download_checkstyle(version)
+        checkstyle_version = args_dict.pop('version')
+        binary_file = self._store.download_checkstyle(checkstyle_version)
+        files = args_dict.pop('files')
 
-        cmd = [
-            'java', '-jar', utils.get_checkstyle_cache(filename),
-            '-c', args.config,
-        ]
-        files = args.files
-        subprocess.run(cmd + files)
-
-    def parse_args(
-        self, argv: Optional[Sequence[str]],
-    ) -> Tuple[Namespace, List[str]]:
-        return self._parser.parse_known_args(argv)
+        exit_code = run_command(
+            target=self._store.get_checkstyle_cache(binary_file),
+            args=self._parser.convert_args_dict_to_list(args_dict) + files,
+        )
+        return exit_code

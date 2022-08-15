@@ -6,11 +6,30 @@ checkstyle-cli
 
 A command-line tool for checkstyle.
 
+Requirements
+---
+
+- Java >= 8
+
 Installation
 ---
 
+### Using cli
+
 ```bash
 > pip install checkstyle-cli
+```
+
+### Using pre-commit
+
+Add this to your `.pre-commit-config.yaml`
+
+```yaml
+repos:
+  - repo: https://github.com/junghoon-vans/checkstyle-hooks
+    rev: v0.3.0 # Use the ref you want
+    hooks:
+    - id: checkstyle
 ```
 
 Usage
