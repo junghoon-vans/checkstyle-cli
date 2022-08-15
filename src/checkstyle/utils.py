@@ -31,8 +31,10 @@ def arg_parser() -> argparse.ArgumentParser:
 
 
 def run_command(target: str, args: List[str]) -> int:
+    cmd = ['java', '-jar', target] + args
+
     result = subprocess.run(
-        ['java', '-jar', get_checkstyle_cache(target)] + args,
+        args=cmd,
         capture_output=True,
         encoding="UTF-8",
     )
