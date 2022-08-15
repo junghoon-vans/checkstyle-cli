@@ -23,8 +23,21 @@ class Store:
 
     def _get_checkstyle_filename(self, version: str) -> str:
         _prefix_filename = "checkstyle-{version}-all.jar"
+
+        if version == 'latest':
+            version = self._get_latest_checkstyle_version()
+
         filename = _prefix_filename.format(version=version)
         return filename
+
+    def _get_latest_checkstyle_version(self) -> str:
+        response = requests.get(
+            "https://api.github.com/repos/checkstyle/checkstyle"
+            "/releases/latest",
+        )
+        latest_tag = response.json()['tag_name']
+        latest_version = latest_tag.strip('checkstyle-')
+        return latest_version
 
     def _is_exist_file(self, filename: str) -> bool:
         return os.path.exists(self.get_checkstyle_cache(filename))

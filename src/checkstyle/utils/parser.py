@@ -14,14 +14,14 @@ class Parser:
             "-c",
             "--config",
             type=str,
-            default="/google_checks.xml",
+            default="google",
             help="checkstyle configuration file",
         )
         self._parser.add_argument(
             "-v",
             "--version",
             type=str,
-            default="10.3.2",
+            default="latest",
             help="checkstyle version",
         )
         self._parser.add_argument(
@@ -31,7 +31,14 @@ class Parser:
 
     def parse_args_dict(self, argv: Optional[Sequence[str]]) -> Dict[str, Any]:
         args, unknown = self._parser.parse_known_args(argv)
-        return vars(args)
+        args_dict = vars(args)
+
+        if self._is_google_or_sun(args_dict['config']):
+            args_dict['config'] = "/{name}_checks.xml".format(
+                name=args_dict['config'],
+            )
+
+        return args_dict
 
     def convert_args_dict_to_list(self, kwargs) -> List[str]:
         result = []
@@ -39,3 +46,6 @@ class Parser:
             result.append("-"+k[0])
             result.append(v)
         return result
+
+    def _is_google_or_sun(self, config: str):
+        return config == 'google' or 'sun'
