@@ -4,6 +4,7 @@ from typing import Sequence
 from checkstyle import application
 
 
-def main(argv: Optional[Sequence[str]] = None):
+def main(argv: Optional[Sequence[str]] = None) -> int:
     app = application.Application()
-    app.run(argv)
+    exit_code = app.run(argv)
+    return exit_code
