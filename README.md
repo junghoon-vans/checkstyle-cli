@@ -27,7 +27,7 @@ Add this to your `.pre-commit-config.yaml`
 ```yaml
 repos:
   - repo: https://github.com/junghoon-vans/checkstyle-hooks
-    rev: # Use the ref you want
+    rev: v0.3.0 # Use the ref you want
     hooks:
     - id: checkstyle
 ```
