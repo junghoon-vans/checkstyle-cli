@@ -21,7 +21,7 @@ class Parser:
             "-v",
             "--version",
             type=str,
-            default="10.3.2",
+            default="latest",
             help="checkstyle version",
         )
         self._parser.add_argument(

@@ -56,7 +56,7 @@ usage: checkstyle [-h] [-c CONFIG] [-v VERSION]
     - `/sun_checks.xml` and `/google_checks.xml` are embedded options.
 - `-v`, `--version`
   - version to run checkstyle
-  - default: `10.3.2`
+  - default: `latest`
 
 License
 ---
