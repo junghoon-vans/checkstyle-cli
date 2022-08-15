@@ -52,8 +52,8 @@ usage: checkstyle [-h] [-c CONFIG] [-v VERSION]
 
 - `-c`, `--config`
   - configuration XML file path
-  - default: `/google_checks.xml`
-    - `/sun_checks.xml` and `/google_checks.xml` are embedded options.
+  - default: `google`
+    - `sun` and `google` are embedded options.
 - `-v`, `--version`
   - version to run checkstyle
   - default: `latest`

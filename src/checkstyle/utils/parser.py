@@ -14,7 +14,7 @@ class Parser:
             "-c",
             "--config",
             type=str,
-            default="/google_checks.xml",
+            default="google",
             help="checkstyle configuration file",
         )
         self._parser.add_argument(
