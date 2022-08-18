@@ -1,6 +1,7 @@
 checkstyle-cli
 ===
 
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/junghoon-vans/checkstyle-cli/develop.svg)](https://results.pre-commit.ci/latest/github/junghoon-vans/checkstyle-cli/develop)
 [![PyPI version](https://img.shields.io/pypi/v/checkstyle-cli?style=flat-square)](https://pypi.org/project/checkstyle-cli/)
 ![python versions](https://img.shields.io/pypi/pyversions/checkstyle-cli?style=flat-square)
 
