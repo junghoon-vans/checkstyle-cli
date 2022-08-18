@@ -10,5 +10,5 @@ def parser() -> Parser:
 
 def test_parse_args(parser: Parser):
     assert parser.parse_args_dict(None) == {
-        'config': '/google_checks.xml', 'version': '10.3.2', 'files': [],
+        'config': '/google_checks.xml', 'version': 'latest', 'files': [],
     }

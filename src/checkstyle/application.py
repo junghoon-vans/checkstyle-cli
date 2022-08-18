@@ -14,12 +14,13 @@ class Application:
     def run(self, argv: Optional[Sequence[str]]) -> int:
         args_dict = self._parser.parse_args_dict(argv)
 
-        checkstyle_version = args_dict.pop('version')
-        binary_file = self._store.download_checkstyle(checkstyle_version)
+        version = args_dict.pop('version')
         files = args_dict.pop('files')
 
+        filename = self._store.download_checkstyle(version)
+
         exit_code = run_command(
-            target=self._store.get_checkstyle_cache(binary_file),
+            target=self._store.get_checkstyle_cache(filename=filename),
             args=self._parser.convert_args_dict_to_list(args_dict) + files,
         )
         return exit_code
