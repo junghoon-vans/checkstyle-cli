@@ -47,5 +47,5 @@ class Parser:
             result.append(v)
         return result
 
-    def _is_google_or_sun(self, config: str):
-        return config == 'google' or 'sun'
+    def _is_google_or_sun(self, config: str) -> bool:
+        return config == 'google' or config == 'sun'
