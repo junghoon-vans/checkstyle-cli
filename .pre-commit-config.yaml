@@ -1,7 +1,7 @@
 ---
 repos:
   - repo: https://github.com/asottile/setup-cfg-fmt
-    rev: v1.20.2
+    rev: v2.0.0
     hooks:
     - id: setup-cfg-fmt
   - repo: https://github.com/asottile/reorder_python_imports
@@ -17,11 +17,11 @@ repos:
     hooks:
     - id: pyupgrade
   - repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: v1.6.0
+    rev: v1.7.0
     hooks:
     - id: autopep8
   - repo: https://github.com/PyCQA/flake8
-    rev: 4.0.1
+    rev: 5.0.4
     hooks:
     - id: flake8
   - repo: https://github.com/pre-commit/mirrors-mypy
