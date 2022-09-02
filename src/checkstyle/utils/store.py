@@ -6,6 +6,8 @@ from tqdm import tqdm
 
 
 def download_checkstyle(version: str, path: str) -> str:
+    if version == 'latest':
+        version = _get_latest_checkstyle_version()
 
     filename = _get_checkstyle_filename(version)
     if not _is_exist_file(filename):
@@ -64,10 +66,6 @@ def _download(url: str, filename: str, path: str) -> None:
 
 def _get_checkstyle_filename(version: str) -> str:
     _prefix_filename = "checkstyle-{version}-all.jar"
-
-    if version == 'latest':
-        version = _get_latest_checkstyle_version()
-
     filename = _prefix_filename.format(version=version)
     return filename
 
