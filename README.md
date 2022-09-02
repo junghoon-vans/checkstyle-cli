@@ -34,7 +34,7 @@ Add this to your `.pre-commit-config.yaml`
 
 ```yaml
 repos:
-  - repo: https://github.com/junghoon-vans/checkstyle-hooks
+  - repo: https://github.com/junghoon-vans/checkstyle-cli
     rev: v0.3.2 # Use the ref you want
     hooks:
     - id: checkstyle
@@ -65,7 +65,7 @@ Options
 ### `-v`, `--version`
 
 - version to run checkstyle
-- default: `latest`
+- default: `10.3.3`
 
 Caching
 ---
