@@ -1,9 +1,10 @@
+import os.path
 import subprocess
 from typing import List
 
 
-def run_command(target: str, args: List[str]) -> int:
-    cmd = ['java', '-jar', target] + args
+def run_command(filename: str, path: str, args: List[str]) -> int:
+    cmd = ['java', '-jar', os.path.join(path, filename)] + args
 
     result = subprocess.run(
         args=cmd,

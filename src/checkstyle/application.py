@@ -5,7 +5,7 @@ from checkstyle.utils import run_command
 from checkstyle.utils.parser import convert_args_dict_to_list
 from checkstyle.utils.parser import Parser
 from checkstyle.utils.store import download_checkstyle
-from checkstyle.utils.store import get_checkstyle_cache
+from checkstyle.utils.store import get_checkstyle_cache_path
 
 
 class Application:
@@ -18,10 +18,13 @@ class Application:
         version = args_dict.pop('version')
         files = args_dict.pop('files')
 
-        filename = download_checkstyle(version)
+        filename = download_checkstyle(
+            version=version, path=get_checkstyle_cache_path(),
+        )
 
         exit_code = run_command(
-            target=get_checkstyle_cache(filename=filename),
+            filename=filename,
+            path=get_checkstyle_cache_path(),
             args=convert_args_dict_to_list(args_dict) + files,
         )
         return exit_code

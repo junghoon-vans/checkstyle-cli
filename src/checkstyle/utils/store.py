@@ -5,25 +5,26 @@ from appdirs import user_cache_dir
 from tqdm import tqdm
 
 
-def download_checkstyle(version: str) -> str:
+def download_checkstyle(version: str, path: str) -> str:
+
     filename = _get_checkstyle_filename(version)
     if not _is_exist_file(filename):
         try:
             _download(
                 url=_get_checkstyle_download_url(version),
                 filename=_get_checkstyle_filename(version),
-                target=get_checkstyle_cache(filename),
+                path=path,
             )
         except requests.exceptions.HTTPError as e:
             print(e)
     return filename
 
 
-def get_checkstyle_cache(filename: str) -> str:
+def get_checkstyle_cache_path() -> str:
     cache_path = user_cache_dir('checkstyle')
     if not os.path.exists(cache_path):
         os.makedirs(cache_path)
-    return os.path.join(cache_path, filename)
+    return cache_path
 
 
 def _get_checkstyle_download_url(version: str) -> str:
@@ -43,12 +44,12 @@ def _get_latest_checkstyle_version() -> str:
     return latest_version
 
 
-def _download(url: str, filename: str, target: str) -> None:
+def _download(url: str, filename: str, path: str) -> None:
     r = requests.get(url + filename, stream=True)
     r.raise_for_status()
     total = int(r.headers.get('Content-Length', 0))
 
-    with open(target, "wb") as f, tqdm(
+    with open(os.path.join(path, filename), "wb") as f, tqdm(
         desc=filename,
         total=total,
         unit='iB',
@@ -72,4 +73,4 @@ def _get_checkstyle_filename(version: str) -> str:
 
 
 def _is_exist_file(filename: str) -> bool:
-    return os.path.exists(get_checkstyle_cache(filename))
+    return os.path.exists(os.path.join(get_checkstyle_cache_path(), filename))
