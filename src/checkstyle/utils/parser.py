@@ -6,6 +6,18 @@ from typing import Optional
 from typing import Sequence
 
 
+def convert_args_dict_to_list(kwargs) -> List[str]:
+    result = []
+    for k, v in kwargs.items():
+        result.append("-"+k[0])
+        result.append(v)
+    return result
+
+
+def _is_google_or_sun(config: str) -> bool:
+    return config == 'google' or config == 'sun'
+
+
 class Parser:
     _parser = ArgumentParser()
 
@@ -33,19 +45,9 @@ class Parser:
         args, unknown = self._parser.parse_known_args(argv)
         args_dict = vars(args)
 
-        if self._is_google_or_sun(args_dict['config']):
+        if _is_google_or_sun(args_dict['config']):
             args_dict['config'] = "/{name}_checks.xml".format(
                 name=args_dict['config'],
             )
 
         return args_dict
-
-    def convert_args_dict_to_list(self, kwargs) -> List[str]:
-        result = []
-        for k, v in kwargs.items():
-            result.append("-"+k[0])
-            result.append(v)
-        return result
-
-    def _is_google_or_sun(self, config: str) -> bool:
-        return config == 'google' or config == 'sun'
