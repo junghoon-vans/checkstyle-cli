@@ -5,6 +5,8 @@ from typing import List
 from typing import Optional
 from typing import Sequence
 
+from src.checkstyle import default_runtime
+
 
 def convert_args_dict_to_list(kwargs) -> List[str]:
     result = []
@@ -33,7 +35,7 @@ class Parser:
             "-v",
             "--version",
             type=str,
-            default="latest",
+            default=default_runtime,
             help="checkstyle version",
         )
         self._parser.add_argument(
