@@ -10,7 +10,7 @@ def download_checkstyle(version: str, path: str) -> str:
         version = _get_latest_checkstyle_version()
 
     filename = _get_checkstyle_filename(version)
-    if not _is_exist_file(filename):
+    if not _is_exist_file(filename, path):
         try:
             _download(
                 url=_get_checkstyle_download_url(version),
@@ -70,5 +70,5 @@ def _get_checkstyle_filename(version: str) -> str:
     return filename
 
 
-def _is_exist_file(filename: str) -> bool:
-    return os.path.exists(os.path.join(get_checkstyle_cache_path(), filename))
+def _is_exist_file(filename: str, path: str) -> bool:
+    return os.path.exists(os.path.join(path, filename))
