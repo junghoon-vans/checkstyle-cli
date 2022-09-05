@@ -5,7 +5,7 @@ from typing import List
 from typing import Optional
 from typing import Sequence
 
-from src.checkstyle import default_runtime
+from checkstyle import default_runtime
 
 
 def convert_args_dict_to_list(kwargs) -> List[str]:
@@ -32,8 +32,8 @@ class Parser:
             help="checkstyle configuration file",
         )
         self._parser.add_argument(
-            "-v",
-            "--version",
+            "-C",
+            "--checkstyle-version",
             type=str,
             default=default_runtime,
             help="checkstyle version",

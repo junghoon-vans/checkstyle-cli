@@ -15,7 +15,7 @@ class Application:
     def run(self, argv: Optional[Sequence[str]]) -> int:
         args_dict = self._parser.parse_args_dict(argv)
 
-        version = args_dict.pop('version')
+        version = args_dict.pop('checkstyle_version')
         files = args_dict.pop('files')
 
         filename = download_checkstyle(
