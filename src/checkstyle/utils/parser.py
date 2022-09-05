@@ -5,6 +5,7 @@ from typing import List
 from typing import Optional
 from typing import Sequence
 
+from checkstyle import __version__
 from checkstyle import default_runtime
 
 
@@ -30,6 +31,12 @@ class Parser:
             type=str,
             default="google",
             help="checkstyle configuration file",
+        )
+        self._parser.add_argument(
+            "-V",
+            "--version",
+            action='version',
+            version=f'checkstyle-cli {__version__}',
         )
         self._parser.add_argument(
             "-C",
