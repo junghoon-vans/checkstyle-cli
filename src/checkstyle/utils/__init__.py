@@ -12,10 +12,10 @@ def run_command(filename: str, cache_dir: str, args: List[str]) -> int:
         encoding="UTF-8",
     )
 
-    output = result.stdout
     exit_code = result.returncode
-
+    output = result.stdout or result.stderr
     print(output)
+
     if result.check_returncode is not None:
         print(
             "Process finished with exit code {exit_code}".format(
