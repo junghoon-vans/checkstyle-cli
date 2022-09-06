@@ -1,7 +1,6 @@
 import pytest
+from checkstyle import default_runtime
 from checkstyle.utils.parser import Parser
-
-from src.checkstyle import default_runtime
 
 
 @pytest.fixture
@@ -12,6 +11,6 @@ def parser() -> Parser:
 
 def test_parse_args(parser: Parser):
     assert parser.parse_args_dict(None) == {
-        'config': '/google_checks.xml',
-        'checkstyle_version': default_runtime, 'files': [],
+        'config': '/google_checks.xml', 'files': [],
+        'runtime_version': default_runtime,
     }
