@@ -1,7 +1,7 @@
 checkstyle-cli
 ===
 
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/junghoon-vans/checkstyle-cli/develop.svg)](https://results.pre-commit.ci/latest/github/junghoon-vans/checkstyle-cli/develop)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/junghoon-vans/checkstyle-cli/develop.svg)](https://results.pre-commit.ci/latest/github/junghoon-vans/checkstyle-cli/main)
 [![PyPI version](https://img.shields.io/pypi/v/checkstyle-cli?style=flat-square)](https://pypi.org/project/checkstyle-cli/)
 ![python versions](https://img.shields.io/pypi/pyversions/checkstyle-cli?style=flat-square)
 
@@ -35,7 +35,7 @@ Add this to your `.pre-commit-config.yaml`
 ```yaml
 repos:
   - repo: https://github.com/junghoon-vans/checkstyle-cli
-    rev: v0.3.2 # Use the ref you want
+    rev: v0.4.0 # Use the ref you want
     hooks:
     - id: checkstyle
 ```
