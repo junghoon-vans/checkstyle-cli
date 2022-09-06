@@ -39,8 +39,7 @@ class Parser:
             version=f'checkstyle-cli {__version__}',
         )
         self._parser.add_argument(
-            "-C",
-            "--checkstyle-version",
+            "--runtime-version",
             type=str,
             default=default_runtime,
             help="checkstyle version",
