@@ -50,7 +50,7 @@ Usage
 > checkstyle .
 
 # run with custom options
-> checkstyle -c custom_config.xml -v 10.3.2 ~/workspace/demo
+> checkstyle -c custom_config.xml --runtime-version 10.3.2 ~/workspace/demo
 ```
 
 Options
@@ -64,7 +64,11 @@ Options
 
 ### `-v`, `--version`
 
-- version to run checkstyle
+- show program's version number and exit
+
+### `--runtime-version`
+
+- set runtime version of checkstyle
 - default: `10.3.3`
 
 Caching
