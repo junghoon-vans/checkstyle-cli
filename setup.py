@@ -6,15 +6,10 @@ from distutils.core import Command
 from setuptools import setup
 from setuptools.command.install import install as orig_install
 
+SOURCE_DIR = os.path.join(os.path.dirname(__file__), 'src')
 
 if __name__ == "__main__":   # import checkstyle module
-    sys.path.insert(
-        0, os.path.join(
-            os.path.dirname(
-                os.path.abspath(__file__),
-            ), 'src',
-        ),
-    )
+    sys.path.insert(0, SOURCE_DIR)
     from checkstyle import default_runtime
     from checkstyle.utils.store import download_checkstyle
     from checkstyle.utils.store import get_checkstyle_cache_dir
@@ -29,42 +24,36 @@ class install(orig_install):
 
 
 class fetch_binaries(Command):
-    build_lib = None
+    build_temp = None
 
     def initialize_options(self):
         pass
 
     def finalize_options(self):
-        self.set_undefined_options('build', ('build_lib', 'build_lib'))
+        self.set_undefined_options('build', ('build_temp', 'build_temp'))
 
     def run(self):
-        fetch_dir = os.path.join(
-            self.build_lib, 'checkstyle/.checkstyle_cache',
-        )
-
-        if not os.path.exists(fetch_dir):
-            os.makedirs(fetch_dir)
+        if not os.path.exists(self.build_temp):
+            os.makedirs(self.build_temp)
 
         download_checkstyle(
             version=default_runtime,
-            fetch_dir=fetch_dir,
+            fetch_dir=self.build_temp,
         )
 
 
 class install_checkstyle(Command):
-    build_lib = None
+    build_temp = None
 
     def initialize_options(self):
         pass
 
     def finalize_options(self):
-        self.set_undefined_options('build', ('build_lib', 'build_lib'))
+        self.set_undefined_options('build', ('build_temp', 'build_temp'))
 
     def run(self):
         self.copy_tree(
-            infile=os.path.join(
-                self.build_lib, 'checkstyle/.checkstyle_cache',
-            ),
+            infile=self.build_temp,
             outfile=get_checkstyle_cache_dir(),
         )
 
