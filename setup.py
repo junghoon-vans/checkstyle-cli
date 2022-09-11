@@ -19,50 +19,44 @@ class build(orig_build):
     sub_commands = orig_build.sub_commands + [('fetch_binaries', None)]
 
 
-class install(orig_install):
-    sub_commands = orig_install.sub_commands + [('install_checkstyle', None)]
-
-
 class fetch_binaries(Command):
-    build_temp = None
+    build_dir = None
 
     def initialize_options(self):
         pass
 
     def finalize_options(self):
-        self.set_undefined_options('build', ('build_temp', 'build_temp'))
+        self.set_undefined_options('build', ('build_temp', 'build_dir'))
 
     def run(self):
-        if not os.path.exists(self.build_temp):
-            os.makedirs(self.build_temp)
+        if not os.path.exists(self.build_dir):
+            os.makedirs(self.build_dir)
 
         download_checkstyle(
             version=default_runtime,
-            fetch_dir=self.build_temp,
+            fetch_dir=self.build_dir,
         )
 
 
-class install_checkstyle(Command):
-    build_temp = None
+class install_checkstyle(orig_install):
+    build_dir = None
 
     def initialize_options(self):
-        pass
+        super().initialize_options()
 
     def finalize_options(self):
-        self.set_undefined_options('build', ('build_temp', 'build_temp'))
+        self.set_undefined_options('build', ('build_temp', 'build_dir'))
+        super().finalize_options()
 
     def run(self):
-        self.copy_tree(
-            infile=self.build_temp,
-            outfile=get_checkstyle_cache_dir(),
-        )
+        self.copy_tree(self.build_dir, get_checkstyle_cache_dir())
+        super().run()
 
 
 setup(
     cmdclass={
         'build': build,
         'fetch_binaries': fetch_binaries,
-        'install': install,
-        'install_checkstyle': install_checkstyle,
+        'install': install_checkstyle,
     },
 )
