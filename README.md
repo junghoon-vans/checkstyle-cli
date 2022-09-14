@@ -1,6 +1,7 @@
 checkstyle-cli
 ===
 
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/junghoon-vans/checkstyle-cli/develop.svg)](https://results.pre-commit.ci/latest/github/junghoon-vans/checkstyle-cli/develop)
 [![PyPI version](https://img.shields.io/pypi/v/checkstyle-cli?style=flat-square)](https://pypi.org/project/checkstyle-cli/)
 ![python versions](https://img.shields.io/pypi/pyversions/checkstyle-cli?style=flat-square)
 
@@ -33,8 +34,8 @@ Add this to your `.pre-commit-config.yaml`
 
 ```yaml
 repos:
-  - repo: https://github.com/junghoon-vans/checkstyle-hooks
-    rev: v0.3.2 # Use the ref you want
+  - repo: https://github.com/junghoon-vans/checkstyle-cli
+    rev: v0.4.0 # Use the ref you want
     hooks:
     - id: checkstyle
 ```
@@ -49,7 +50,7 @@ Usage
 > checkstyle .
 
 # run with custom options
-> checkstyle -c custom_config.xml -v 10.3.2 ~/workspace/demo
+> checkstyle -c custom_config.xml --runtime-version 10.3.2 ~/workspace/demo
 ```
 
 Options
@@ -63,8 +64,12 @@ Options
 
 ### `-v`, `--version`
 
-- version to run checkstyle
-- default: `latest`
+- show program's version number and exit
+
+### `--runtime-version`
+
+- set runtime version of checkstyle
+- default: `10.3.3`
 
 Caching
 ---
