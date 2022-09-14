@@ -15,11 +15,11 @@ if __name__ == "__main__":   # import checkstyle module
     from checkstyle.utils.store import get_checkstyle_cache_dir
 
 
-class build(orig_build):
+class Build(orig_build):
     sub_commands = orig_build.sub_commands + [('fetch_binaries', None)]
 
 
-class fetch_binaries(Command):
+class FetchBinaries(Command):
     build_dir = None
 
     def initialize_options(self):
@@ -38,7 +38,7 @@ class fetch_binaries(Command):
         )
 
 
-class install_checkstyle(orig_install):
+class Install(orig_install):
     build_dir = None
 
     def initialize_options(self):
@@ -55,8 +55,8 @@ class install_checkstyle(orig_install):
 
 setup(
     cmdclass={
-        'build': build,
-        'fetch_binaries': fetch_binaries,
-        'install': install_checkstyle,
+        'build': Build,
+        'fetch_binaries': FetchBinaries,
+        'install': Install,
     },
 )
