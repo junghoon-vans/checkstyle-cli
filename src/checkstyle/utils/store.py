@@ -1,3 +1,4 @@
+"""Module for handling checkstyle binaries"""
 import os
 
 import requests
@@ -6,6 +7,16 @@ from tqdm import tqdm
 
 
 def download_checkstyle(version: str, fetch_dir: str) -> str:
+    """Download checkstyle binary file
+
+        Args:
+            version: Checkstyle runtime version
+            fetch_dir: Download location
+
+        Returns:
+            Binary filename
+
+    """
     if version == 'latest':
         version = _get_latest_checkstyle_version()
 
@@ -23,16 +34,41 @@ def download_checkstyle(version: str, fetch_dir: str) -> str:
 
 
 def is_exist_file(filename: str, fetch_dir: str) -> bool:
+    """Checking for existence of binary file
+
+        Args:
+            filename: Checkstyle binary filename
+            fetch_dir: Download location
+
+        Returns:
+            If binary file already exists, return True
+
+    """
     return os.path.exists(os.path.join(fetch_dir, filename))
 
 
 def get_checkstyle_filename(version: str) -> str:
+    """Return binary filename from version
+
+        Args:
+            version: Checkstyle runtime version
+
+        Returns:
+            Checkstyle binary filename
+
+    """
     _prefix_filename = "checkstyle-{version}-all.jar"
     filename = _prefix_filename.format(version=version)
     return filename
 
 
 def get_checkstyle_cache_dir() -> str:
+    """Return checkstyle cache directory
+
+        Returns:
+            Cache directory
+
+    """
     cache_dir = user_cache_dir('checkstyle')
     if not os.path.exists(cache_dir):
         os.makedirs(cache_dir)
@@ -40,6 +76,15 @@ def get_checkstyle_cache_dir() -> str:
 
 
 def _get_checkstyle_download_url(version: str) -> str:
+    """Return checkstyle binary download URL from version
+
+        Args:
+            version: Checkstyle runtime version
+
+        Returns:
+            Checkstyle binary download URL
+
+    """
     _prefix_url = "https://github.com/checkstyle/checkstyle/" \
         "releases/download/checkstyle-{version}/"
     download_url = _prefix_url.format(version=version)
@@ -47,6 +92,12 @@ def _get_checkstyle_download_url(version: str) -> str:
 
 
 def _get_latest_checkstyle_version() -> str:
+    """Convert arguments dictionary to list
+
+        Returns:
+            Latest checkstyle version
+
+    """
     response = requests.get(
         "https://api.github.com/repos/checkstyle/checkstyle"
         "/releases/latest",
@@ -57,6 +108,17 @@ def _get_latest_checkstyle_version() -> str:
 
 
 def _download(url: str, filename: str, fetch_dir: str) -> None:
+    """Execute downloading
+
+        Args:
+            url: Download URL
+            filename: Download filename
+            fetch_dir: Fetch directory
+
+        Returns:
+            Arguments list
+
+    """
     r = requests.get(url + filename, stream=True)
     r.raise_for_status()
     total = int(r.headers.get('Content-Length', 0))

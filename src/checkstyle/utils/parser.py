@@ -1,3 +1,4 @@
+"""Module for handling cli options"""
 from argparse import ArgumentParser
 from typing import Any
 from typing import Dict
@@ -9,15 +10,25 @@ from checkstyle import __version__
 from checkstyle import default_runtime
 
 
-def convert_args_dict_to_list(kwargs) -> List[str]:
+def convert_args_dict_to_list(args_dict) -> List[str]:
+    """Convert arguments dictionary to list
+
+        Args:
+            args_dict: Arguments dictionary
+
+        Returns:
+            Arguments list
+
+    """
     result = []
-    for k, v in kwargs.items():
+    for k, v in args_dict.items():
         result.append("-"+k[0])
         result.append(v)
     return result
 
 
 def _is_google_or_sun(config: str) -> bool:
+    """Checking config option is google or sun"""
     return config == 'google' or config == 'sun'
 
 
@@ -50,6 +61,15 @@ class Parser:
         )
 
     def parse_args_dict(self, argv: Optional[Sequence[str]]) -> Dict[str, Any]:
+        """Parse arguments dictionary from arguments vector
+
+            Args:
+                argv: Arguments vector
+
+            Returns:
+                Arguments dictionary
+
+        """
         args, unknown = self._parser.parse_known_args(argv)
         args_dict = vars(args)
 
