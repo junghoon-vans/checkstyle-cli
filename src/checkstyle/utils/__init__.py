@@ -1,9 +1,21 @@
+"""Utils package"""
 import os.path
 import subprocess
 from typing import List
 
 
 def run_command(filename: str, base_dir: str, args: List[str]) -> int:
+    """Function for running java program
+
+        Args:
+            filename: Binary file to run
+            base_dir: Directory where the binary file is located
+            args: Arguments needed to run the program
+
+        Returns:
+            int: Exit code
+
+    """
     cmd = ['java', '-jar', os.path.join(base_dir, filename)] + args
 
     result = subprocess.run(
