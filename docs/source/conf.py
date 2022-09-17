@@ -8,6 +8,13 @@ copyright = '2022, junghoon-vans'
 author = 'junghoon-vans'
 
 # -- General configuration ---------------------------------------------------
+language = 'en'
+
+templates_path = ['_templates']
+exclude_patterns = ['Thumbs.db', '.DS_Store']
+
+pygments_style = 'sphinx'
+
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
@@ -18,12 +25,6 @@ extensions = [
 
 source_suffix = '.rst'
 master_doc = 'index'
-pygments_style = 'sphinx'
-
-templates_path = ['_templates']
-exclude_patterns = ['Thumbs.db', '.DS_Store']
-
-language = 'en'
 
 # -- Options for HTML output -------------------------------------------------
 html_theme = 'furo'
