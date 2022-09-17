@@ -36,7 +36,7 @@ class Application:
 
         exit_code = run_command(
             filename=filename,
-            cache_dir=get_checkstyle_cache_dir(),
+            base_dir=get_checkstyle_cache_dir(),
             args=convert_args_dict_to_list(args_dict) + files,
         )
         return exit_code
