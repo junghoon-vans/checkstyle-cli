@@ -53,33 +53,6 @@ Usage
 > checkstyle -c custom_config.xml --runtime-version 10.3.2 ~/workspace/demo
 ```
 
-Options
----
-
-### `-c`, `--config`
-
-- configuration XML file path
-- default: `google`
-  - `sun` and `google` are embedded options.
-
-### `-v`, `--version`
-
-- show program's version number and exit
-
-### `--runtime-version`
-
-- set runtime version of checkstyle
-- default: `10.3.3`
-
-Caching
----
-
-When you run a `checkstyle` command, it automatically fetches the required files and saves them in the following path:
-
-- Linux: `~/.cache/checkstyle`
-- Mac OS X: `~/Library/Caches/checkstyle`
-- Windows: `%LocalAppData%\checkstyle\checkstyle\Cache`
-
 License
 ---
 
