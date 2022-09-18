@@ -1,5 +1,5 @@
-checkstyle.application module
-=============================
+checkstyle.application
+======================
 
 .. automodule:: checkstyle.application
    :members:

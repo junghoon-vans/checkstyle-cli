@@ -1,5 +1,5 @@
-checkstyle.utils.store module
-=============================
+checkstyle.utils.store
+======================
 
 .. automodule:: checkstyle.utils.store
    :members:

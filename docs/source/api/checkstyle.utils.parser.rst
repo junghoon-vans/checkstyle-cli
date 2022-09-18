@@ -1,5 +1,5 @@
-checkstyle.utils.parser module
-==============================
+checkstyle.utils.parser
+=======================
 
 .. automodule:: checkstyle.utils.parser
    :members:

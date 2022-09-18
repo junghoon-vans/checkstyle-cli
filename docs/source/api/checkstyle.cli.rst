@@ -1,5 +1,5 @@
-checkstyle.cli module
-=====================
+checkstyle.cli
+==============
 
 .. automodule:: checkstyle.cli
    :members:
