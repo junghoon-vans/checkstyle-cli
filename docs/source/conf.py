@@ -1,9 +1,8 @@
 import os
 import sys
 
-import checkstyle
-
 sys.path.insert(0, os.path.abspath('../../src/'))
+import checkstyle  # noqa
 
 # -- Project information -----------------------------------------------------
 project = 'checkstyle-cli'
