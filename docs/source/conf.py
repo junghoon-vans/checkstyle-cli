@@ -28,7 +28,7 @@ extensions = [
     'sphinx_search.extension',
 ]
 
-source_suffix = '.rst'
+source_suffix = '.rst', '.md'
 master_doc = 'index'
 
 # -- Options for HTML output -------------------------------------------------
