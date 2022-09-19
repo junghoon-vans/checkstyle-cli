@@ -34,6 +34,7 @@ master_doc = 'index'
 
 # -- Options for HTML output -------------------------------------------------
 html_theme = 'furo'
+html_title = f'{project} documentation {release}'
 
 # -- Autodoc configuration ---------------------------------------------------
 autodoc_member_order = 'bysource'
