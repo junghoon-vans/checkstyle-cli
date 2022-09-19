@@ -56,6 +56,15 @@ API documentation
 
    api/index
 
+Changelog
+=========
+
+.. toctree::
+   :maxdepth: 2
+
+   changelog
+
+
 Indices and tables
 ==================
 
