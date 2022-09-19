@@ -18,11 +18,11 @@ To install **checkstyle-cli**, run this command.
 
 If you want **checkstyle-cli** to be used for **pre-commit**, Add this to your ``.pre-commit-config.yaml``.
 
-.. code::
+.. parsed-literal::
 
    repos:
   - repo: https://github.com/junghoon-vans/checkstyle-cli
-    rev: v0.4.0 # Use the ref you want
+    rev: |release| # Use the ref you want
     hooks:
     - id: checkstyle
 
@@ -37,7 +37,7 @@ Usage
    $ checkstyle .
 
    # run with custom options
-   $ checkstyle -c custom_config.xml --runtime-version 10.3.2 ~/path/to/project
+   $ checkstyle -c custom_config.xml --runtime-version 10.3.2 path/to/project
 
 
 User Guide
