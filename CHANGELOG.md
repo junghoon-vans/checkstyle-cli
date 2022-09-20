@@ -1,3 +1,14 @@
+## v0.5.0 (2022-09-20)
+
+### Fix
+
+- Resolve no module named error while deploying readthedocs
+- Resolve '_static' does not exist error
+
+### Refactor
+
+- Rename param in run_command function
+
 ## v0.4.0 (2022-09-14)
 
 ### Feat
