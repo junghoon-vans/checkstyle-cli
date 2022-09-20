@@ -15,5 +15,7 @@ jobs:
       - uses: release-drafter/release-drafter@v5
         with:
           config-name: release-drafter-config.yml
+          name: ${{ github.ref }}
+          tag: ${{ github.ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
