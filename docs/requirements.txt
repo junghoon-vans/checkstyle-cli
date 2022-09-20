@@ -1,0 +1,6 @@
+sphinx==5.1.1
+furo==2022.6.21
+readthedocs-sphinx-search==0.1.2
+appdirs==1.4.4
+tqdm==4.64.0
+myst-parser==0.18.0
