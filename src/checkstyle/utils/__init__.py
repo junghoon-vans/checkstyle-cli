@@ -29,10 +29,6 @@ def run_command(filename: str, base_dir: str, args: List[str]) -> int:
     print(output)
 
     if result.check_returncode is not None:
-        print(
-            "Process finished with exit code {exit_code}".format(
-                exit_code=exit_code,
-            ),
-        )
+        print(f"Process finished with exit code {exit_code}")
 
     return exit_code

@@ -74,8 +74,6 @@ class Parser:
         args_dict = vars(args)
 
         if _is_google_or_sun(args_dict['config']):
-            args_dict['config'] = "/{name}_checks.xml".format(
-                name=args_dict['config'],
-            )
+            args_dict['config'] = f"/{args_dict['config']}_checks.xml"
 
         return args_dict
