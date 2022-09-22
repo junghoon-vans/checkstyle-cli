@@ -27,16 +27,15 @@ class Application:
         """
         args_dict = self._parser.parse_args_dict(argv)
 
-        version = args_dict.pop('runtime_version')
-        files = args_dict.pop('files')
-
-        filename = download_checkstyle(
-            version=version, fetch_dir=get_checkstyle_cache_dir(),
+        binary_file = download_checkstyle(
+            version=args_dict.pop('runtime_version'),
+            fetch_dir=get_checkstyle_cache_dir(),
         )
 
         exit_code = run_command(
-            filename=filename,
+            binary_file=binary_file,
             base_dir=get_checkstyle_cache_dir(),
-            args=convert_args_dict_to_list(args_dict) + files,
+            files=args_dict.pop('files'),
+            args=convert_args_dict_to_list(args_dict),
         )
         return exit_code

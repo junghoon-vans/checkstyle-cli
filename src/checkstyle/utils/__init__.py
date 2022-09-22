@@ -4,19 +4,25 @@ import subprocess
 from typing import List
 
 
-def run_command(filename: str, base_dir: str, args: List[str]) -> int:
+def run_command(
+        binary_file: str,
+        base_dir: str,
+        args: List[str],
+        files: List[str],
+) -> int:
     """Function for running java program
 
         Args:
-            filename: Binary file to run
+            binary_file: Binary file to run the program
             base_dir: Directory where the binary file is located
-            args: Arguments needed to run the program
+            args: Arguments passed to the program
+            files: Target files passed to the program
 
         Returns:
             int: Exit code
 
     """
-    cmd = ['java', '-jar', os.path.join(base_dir, filename)] + args
+    cmd = ['java', '-jar', os.path.join(base_dir, binary_file)] + args + files
 
     result = subprocess.run(
         args=cmd,

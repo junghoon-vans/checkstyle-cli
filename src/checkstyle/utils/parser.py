@@ -57,7 +57,7 @@ class Parser:
         )
         self._parser.add_argument(
             "files", nargs="*",
-            help="files to verify",
+            help="One or more source files to verify",
         )
 
     def parse_args_dict(self, argv: Optional[Sequence[str]]) -> Dict[str, Any]:
