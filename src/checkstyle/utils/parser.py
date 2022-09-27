@@ -66,7 +66,16 @@ class Parser:
 
 
 def convert_dest_to_option_string(dest: str) -> str:
-    """Converting dest to option string"""
+    """Converting dest to option string
+
+        ``foo -> -f``, ``bar -> -b``
+
+        Args:
+            dest: Attribute name of namespace
+
+        Returns:
+            str: Option string
+    """
     option_string = f"-{dest[0]}"
     return option_string
 
