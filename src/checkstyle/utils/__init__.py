@@ -1,31 +1,33 @@
 """Utils package"""
 import os.path
 import subprocess
+from typing import Any
+from typing import Dict
 from typing import List
 
 
 def run_command(
         binary_file: str,
         base_dir: str,
-        args: List[str],
         files: List[str],
+        **kwargs,
 ) -> int:
     """Function for running java program
 
         Args:
             binary_file: Binary file to run the program
             base_dir: Directory where the binary file is located
-            args: Arguments passed to the program
             files: Target files passed to the program
+            kwargs: Keyword arguments passed to the program
 
         Returns:
             int: Exit code
 
     """
-    cmd = ['java', '-jar', os.path.join(base_dir, binary_file)] + args + files
 
+    cmd = ['java', '-jar', os.path.join(base_dir, binary_file)]
     result = subprocess.run(
-        args=cmd,
+        cmd + get_command_args_from(kwargs) + files,
         capture_output=True,
         encoding="UTF-8",
     )
@@ -38,3 +40,20 @@ def run_command(
         print(f"Process finished with exit code {exit_code}")
 
     return exit_code
+
+
+def get_command_args_from(kwargs: Dict[str, Any]) -> List[str]:
+    """Returns arguments list for running command
+        Args:
+            kwargs: Keyword arguments
+
+        Returns:
+            list(str): Arguments list
+    """
+    args = []
+
+    for k, v in kwargs.items():
+        args.append(k)
+        args.append(v)
+
+    return args

@@ -3,7 +3,6 @@ from typing import Optional
 from typing import Sequence
 
 from checkstyle.utils import run_command
-from checkstyle.utils.parser import convert_args_dict_to_list
 from checkstyle.utils.parser import Parser
 from checkstyle.utils.store import download_checkstyle
 from checkstyle.utils.store import get_checkstyle_cache_dir
@@ -36,6 +35,6 @@ class Application:
             binary_file=binary_file,
             base_dir=get_checkstyle_cache_dir(),
             files=args_dict.pop('files'),
-            args=convert_args_dict_to_list(args_dict),
+            **args_dict,
         )
         return exit_code
