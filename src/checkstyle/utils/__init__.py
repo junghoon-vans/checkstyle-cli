@@ -24,17 +24,18 @@ def run_command(
             int: Exit code
 
     """
-
     cmd = ['java', '-jar', os.path.join(base_dir, binary_file)]
+
     result = subprocess.run(
         cmd + get_command_args_from(kwargs) + files,
         capture_output=True,
         encoding="UTF-8",
     )
 
+    print(result.stderr)
+    print(result.stdout)
+
     exit_code = result.returncode
-    output = result.stdout or result.stderr
-    print(output)
 
     if result.check_returncode is not None:
         print(f"Process finished with exit code {exit_code}")
@@ -53,7 +54,10 @@ def get_command_args_from(kwargs: Dict[str, Any]) -> List[str]:
     args = []
 
     for k, v in kwargs.items():
-        args.append(k)
-        args.append(v)
+        if type(v) is not bool:
+            args.append(k)
+            args.append(v)
+        elif v is True:
+            args.append(k)
 
     return args

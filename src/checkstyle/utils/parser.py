@@ -36,6 +36,12 @@ class Parser:
             "files", nargs="*",
             help="One or more source files to verify",
         )
+        self._parser.add_argument(
+            "-d",
+            "--debug",
+            action="store_true",
+            help="prints debug logging",
+        )
 
     def parse_args_dict(self, argv: Optional[Sequence[str]]) -> Dict[str, Any]:
         """Parse arguments dictionary from arguments vector
