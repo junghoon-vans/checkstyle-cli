@@ -2,34 +2,11 @@
 from argparse import ArgumentParser
 from typing import Any
 from typing import Dict
-from typing import List
 from typing import Optional
 from typing import Sequence
 
 from checkstyle import __version__
 from checkstyle import default_runtime
-
-
-def convert_args_dict_to_list(args_dict) -> List[str]:
-    """Convert arguments dictionary to list
-
-        Args:
-            args_dict: Arguments dictionary
-
-        Returns:
-            Arguments list
-
-    """
-    result = []
-    for k, v in args_dict.items():
-        result.append("-"+k[0])
-        result.append(v)
-    return result
-
-
-def _is_google_or_sun(config: str) -> bool:
-    """Checking config option is google or sun"""
-    return config == 'google' or config == 'sun'
 
 
 class Parser:
@@ -59,6 +36,12 @@ class Parser:
             "files", nargs="*",
             help="One or more source files to verify",
         )
+        self._parser.add_argument(
+            "-d",
+            "--debug",
+            action="store_true",
+            help="prints debug logging",
+        )
 
     def parse_args_dict(self, argv: Optional[Sequence[str]]) -> Dict[str, Any]:
         """Parse arguments dictionary from arguments vector
@@ -76,4 +59,27 @@ class Parser:
         if _is_google_or_sun(args_dict['config']):
             args_dict['config'] = f"/{args_dict['config']}_checks.xml"
 
+        exclude_keys = ['runtime_version', 'files']
+        for k in args_dict.keys() - exclude_keys:
+            args_dict[convert_dest_to_option_string(dest=k)] = args_dict.pop(k)
         return args_dict
+
+
+def convert_dest_to_option_string(dest: str) -> str:
+    """Converting dest to option string
+
+        ``foo -> -f``, ``bar -> -b``
+
+        Args:
+            dest: Attribute name of namespace
+
+        Returns:
+            str: Option string
+    """
+    option_string = f"-{dest[0]}"
+    return option_string
+
+
+def _is_google_or_sun(config: str) -> bool:
+    """Checking config option is google or sun"""
+    return config == 'google' or config == 'sun'
