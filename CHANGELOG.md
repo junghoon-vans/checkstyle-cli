@@ -1,3 +1,18 @@
+## v0.6.0 (2022-09-30)
+
+### Feat
+
+- Add debug options to print debug logs
+
+### Fix
+
+- Update test_parser to resolve assertion error
+
+### Refactor
+
+- Change args to kwargs for command execution
+- Update run_command function to add files param
+
 ## v0.5.0 (2022-09-20)
 
 ### Fix
