@@ -57,8 +57,7 @@ def get_checkstyle_filename(version: str) -> str:
             Checkstyle binary filename
 
     """
-    _prefix_filename = "checkstyle-{version}-all.jar"
-    filename = _prefix_filename.format(version=version)
+    filename = f"checkstyle-{version}-all.jar"
     return filename
 
 
@@ -85,9 +84,8 @@ def _get_checkstyle_download_url(version: str) -> str:
             Checkstyle binary download URL
 
     """
-    _prefix_url = "https://github.com/checkstyle/checkstyle/" \
-        "releases/download/checkstyle-{version}/"
-    download_url = _prefix_url.format(version=version)
+    download_url = "https://github.com/checkstyle/checkstyle/" \
+        f"releases/download/checkstyle-{version}/"
     return download_url
 
 
