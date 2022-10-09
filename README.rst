@@ -47,8 +47,8 @@ License <https://github.com/junghoon-vans/checkstyle-cli/blob/main/LICENSE>`__
 
 .. |PyPI version| image:: https://img.shields.io/pypi/v/checkstyle-cli
    :target: https://pypi.org/project/checkstyle-cli/
-.. |pre-commit.ci status| image:: https://results.pre-commit.ci/badge/github/junghoon-vans/checkstyle-cli/develop.svg
-   :target: https://results.pre-commit.ci/latest/github/junghoon-vans/checkstyle-cli/develop
+.. |pre-commit.ci status| image:: https://results.pre-commit.ci/badge/github/junghoon-vans/checkstyle-cli/main.svg
+   :target: https://results.pre-commit.ci/latest/github/junghoon-vans/checkstyle-cli/main
 .. |GitHub Workflow Status| image:: https://img.shields.io/github/workflow/status/junghoon-vans/checkstyle-cli/Upload%20Python%20Package
 .. |Documentation Status| image:: https://readthedocs.org/projects/checkstyle-cli/badge/?version=latest
    :target: https://checkstyle-cli.readthedocs.io/en/latest/?badge=latest
