@@ -15,4 +15,6 @@ def test_parse_args(parser: Parser):
         'runtime_version': default_runtime,
         '-c': '/google_checks.xml',
         '-d': False,
+        '-o': None,
+        '-f': None,
     }
