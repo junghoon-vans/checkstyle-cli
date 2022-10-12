@@ -48,6 +48,13 @@ class Parser:
             type=str,
             help="Sets the output file. Defaults to stdout.",
         )
+        self._parser.add_argument(
+            "-f"
+            "--format",
+            type=str,
+            choices=['xml', 'sarif', 'plain'],
+            help="Specifies the output format.",
+        )
 
     def parse_args_dict(self, argv: Optional[Sequence[str]]) -> Dict[str, Any]:
         """Parse arguments dictionary from arguments vector
