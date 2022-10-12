@@ -14,11 +14,8 @@ class Parser:
 
     def __init__(self) -> None:
         self._parser.add_argument(
-            "-c",
-            "--config",
-            type=str,
-            default="google",
-            help="checkstyle configuration file",
+            "files", nargs="*",
+            help="one or more source files to verify.",
         )
         self._parser.add_argument(
             "-V",
@@ -27,20 +24,37 @@ class Parser:
             version=f'checkstyle-cli {__version__}',
         )
         self._parser.add_argument(
+            "-c",
+            "--config",
+            type=str,
+            default="google",
+            help="set configuration file of checkstyle.",
+        )
+        self._parser.add_argument(
             "--runtime-version",
             type=str,
             default=default_runtime,
-            help="checkstyle version",
-        )
-        self._parser.add_argument(
-            "files", nargs="*",
-            help="One or more source files to verify",
+            help="set runtime version of checkstyle.",
         )
         self._parser.add_argument(
             "-d",
             "--debug",
             action="store_true",
-            help="prints debug logging",
+            help="print debug logging of checkstyle.",
+        )
+        self._parser.add_argument(
+            "-o",
+            "--output",
+            type=str,
+            help="set the output file. Defaults to stdout.",
+        )
+        self._parser.add_argument(
+            "-f"
+            "--format",
+            type=str,
+            default="plain",
+            choices=['xml', 'sarif', 'plain'],
+            help="specifies the output format.",
         )
 
     def parse_args_dict(self, argv: Optional[Sequence[str]]) -> Dict[str, Any]:
