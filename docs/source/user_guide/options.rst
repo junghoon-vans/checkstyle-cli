@@ -10,6 +10,8 @@ Index
 - :option:`checkstyle --config`
 - :option:`checkstyle --runtime-version`
 - :option:`checkstyle --debug`
+- :option:`checkstyle --output`
+- :option:`checkstyle --format`
 
 
 Description
@@ -76,3 +78,30 @@ Description
 
         $ checkstyle -d [files...]
         $ checkstyle --debug [files...]
+
+.. option:: -o, --output
+
+    set the output file.
+
+    * default: ``stdout``
+
+    Command-line example:
+
+    .. code-block::
+
+        $ checkstyle -o ./checkstyle.log [files...]
+        $ checkstyle --output ./checkstyle.log [files...]
+
+.. option:: -f, --format
+
+    specifies the output format.
+
+    * default: ``plain``
+    * choices: xml, sarif, plain
+
+    Command-line example:
+
+    .. code-block::
+
+        $ checkstyle -f xml [files...]
+        $ checkstyle --format sarif [files...]
