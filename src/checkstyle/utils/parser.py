@@ -42,6 +42,12 @@ class Parser:
             action="store_true",
             help="prints debug logging",
         )
+        self._parser.add_argument(
+            "-o",
+            "--output",
+            type=str,
+            help="Sets the output file. Defaults to stdout.",
+        )
 
     def parse_args_dict(self, argv: Optional[Sequence[str]]) -> Dict[str, Any]:
         """Parse arguments dictionary from arguments vector
