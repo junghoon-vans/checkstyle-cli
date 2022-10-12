@@ -19,7 +19,7 @@ Description
 
 .. option:: -h, --help
 
-    Show a description that how to use checkstyle.
+    show a description that how to use checkstyle.
 
     Command-line example:
 
@@ -30,7 +30,7 @@ Description
 
 .. option:: -V, --version
 
-    Show program's version number and exit.
+    show program's version number and exit.
 
     Command-line example:
 
@@ -41,7 +41,7 @@ Description
 
 .. option:: -c, --config
 
-    Set configuration file of checkstyle.
+    set configuration file of checkstyle.
 
     * default: ``google``
     * The configuration is specified using the path or keyword(``sun`` and ``google``).
@@ -55,7 +55,7 @@ Description
 
 .. option:: --runtime-version
 
-    Set ``runtime version`` of checkstyle.
+    set ``runtime version`` of checkstyle.
 
     * default: |DefaultRuntime|
 
@@ -68,7 +68,7 @@ Description
 
 .. option:: -d, --debug
 
-    Print debug logging of checkstyle.
+    print debug logging of checkstyle.
 
     Command-line example:
 
