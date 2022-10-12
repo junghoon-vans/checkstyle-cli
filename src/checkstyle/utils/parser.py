@@ -52,6 +52,7 @@ class Parser:
             "-f"
             "--format",
             type=str,
+            default="plain",
             choices=['xml', 'sarif', 'plain'],
             help="Specifies the output format.",
         )

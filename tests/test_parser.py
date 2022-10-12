@@ -16,5 +16,5 @@ def test_parse_args(parser: Parser):
         '-c': '/google_checks.xml',
         '-d': False,
         '-o': None,
-        '-f': None,
+        '-f': 'plain',
     }
