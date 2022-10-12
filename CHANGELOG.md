@@ -1,3 +1,19 @@
+## v0.7.0 (2022-10-12)
+
+### Feat
+
+- Add -f option to choose output format
+- Add -o option to output log file
+
+### Fix
+
+- Resolve Nonetype error that occur when argument of parser is no default value
+
+### Refactor
+
+- Update help messages of options
+- Add default value to format option of parser
+
 ## v0.6.0 (2022-09-30)
 
 ### Feat
