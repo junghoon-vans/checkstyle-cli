@@ -32,6 +32,10 @@ extensions = [
 source_suffix = '.rst', '.md'
 master_doc = 'index'
 
+rst_prolog = f"""
+.. |DefaultRuntime| replace:: {checkstyle.default_runtime}
+"""
+
 # -- Options for HTML output -------------------------------------------------
 html_theme = 'furo'
 html_title = f'{project} documentation {release}'

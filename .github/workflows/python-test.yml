@@ -1,6 +1,5 @@
 name: Python Test CI
 on:
-  push:
   pull_request:
 
 jobs:

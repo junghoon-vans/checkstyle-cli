@@ -54,7 +54,7 @@ def get_command_args_from(kwargs: Dict[str, Any]) -> List[str]:
     args = []
 
     for k, v in kwargs.items():
-        if type(v) is not bool:
+        if v is not None and type(v) is not bool:
             args.append(k)
             args.append(v)
         elif v is True:
