@@ -33,7 +33,7 @@ Add this to your ``.pre-commit-config.yaml``
 
    repos:
      - repo: https://github.com/junghoon-vans/checkstyle-cli
-       rev: v0.6.0 # Use the ref you want
+       rev: v0.7.0 # Use the ref you want
        hooks:
        - id: checkstyle
 
