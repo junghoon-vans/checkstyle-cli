@@ -6,8 +6,8 @@ Index
 =====
 
 - :option:`checkstyle --help`
-- :option:`checkstyle --config`
 - :option:`checkstyle --version`
+- :option:`checkstyle --config`
 - :option:`checkstyle --runtime-version`
 - :option:`checkstyle --debug`
 
@@ -16,6 +16,7 @@ Description
 ===========
 
 .. program:: checkstyle
+
 .. option:: -h, --help
 
     Show a description that how to use checkstyle.
@@ -26,20 +27,6 @@ Description
 
         $ checkstyle -h
         $ checkstyle --help
-
-.. option:: -c, --config
-
-    Set configuration file of checkstyle.
-
-    * default: ``google``
-    * The configuration is specified using the path or keyword(``sun`` and ``google``).
-
-    Command-line example:
-
-    .. code-block::
-
-        $ checkstyle -c sun
-        $ checkstyle --config path/to/config/file
 
 .. option:: -V, --version
 
@@ -52,6 +39,20 @@ Description
         $ checkstyle -V
         $ checkstyle --version
 
+.. option:: -c, --config
+
+    Set configuration file of checkstyle.
+
+    * default: ``google``
+    * The configuration is specified using the path or keyword(``sun`` and ``google``).
+
+    Command-line example:
+
+    .. code-block::
+
+        $ checkstyle -c sun [files...]
+        $ checkstyle --config path/to/config/file [files...]
+
 .. option:: --runtime-version
 
     Set ``runtime version`` of checkstyle.
@@ -62,7 +63,7 @@ Description
 
     .. parsed-literal::
 
-        $ checkstyle --runtime-version |DefaultRuntime|
+        $ checkstyle --runtime-version |DefaultRuntime| [files...]
 
 
 .. option:: -d, --debug
@@ -73,5 +74,5 @@ Description
 
     .. code-block::
 
-        $ checkstyle -d
-        $ checkstyle --debug
+        $ checkstyle -d [files...]
+        $ checkstyle --debug [files...]
