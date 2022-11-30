@@ -21,6 +21,7 @@ jobs:
         uses: commitizen-tools/commitizen-action@master
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          push: false
       - name: Print Version
         run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
       - if: ${{ steps.cz.outputs.version }}
