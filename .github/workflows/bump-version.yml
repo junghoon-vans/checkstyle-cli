@@ -25,7 +25,7 @@ jobs:
         run: echo "Bumped to version ${{ steps.cz.outputs.version }}
       - uses: junghoon-vans/rst-substitution-action@main
         with:
-          substitutions: "version=${{ steps.cz.outputs.version }}"
+          substitutions: "release=v${{ steps.cz.outputs.version }}"
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_options: "--amend --no-edit"
