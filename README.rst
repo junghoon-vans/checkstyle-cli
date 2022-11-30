@@ -29,11 +29,11 @@ pre-commit
 
 Add this to your ``.pre-commit-config.yaml``
 
-.. code:: yaml
+.. parsed-literal::
 
    repos:
      - repo: https://github.com/junghoon-vans/checkstyle-cli
-       rev: v0.7.0 # Use the ref you want
+       rev: |release|
        hooks:
        - id: checkstyle
 
@@ -57,3 +57,5 @@ License <https://github.com/junghoon-vans/checkstyle-cli/blob/main/LICENSE>`__
 .. |GitHub Workflow Status| image:: https://img.shields.io/github/workflow/status/junghoon-vans/checkstyle-cli/Upload%20Python%20Package
 .. |Documentation Status| image:: https://readthedocs.org/projects/checkstyle-cli/badge/?version=latest
    :target: https://checkstyle-cli.readthedocs.io/en/latest/?badge=latest
+
+.. |release| replace:: v0.7.0
