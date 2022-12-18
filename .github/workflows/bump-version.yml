@@ -24,7 +24,7 @@ jobs:
       - name: Print Version
         run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
       - if: ${{ steps.cz.outputs.version }}
-        uses: junghoon-vans/rst-substitution-action@main
+        uses: junghoon-vans/varst-action@v1
         with:
           substitutions: "release=v${{ steps.cz.outputs.version }}"
       - uses: stefanzweifel/git-auto-commit-action@v4
