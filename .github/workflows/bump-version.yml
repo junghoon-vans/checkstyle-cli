@@ -25,8 +25,12 @@ jobs:
         run: echo "Bumped to version ${{ steps.cz.outputs.version }}"
       - if: ${{ steps.cz.outputs.version }}
         uses: junghoon-vans/varst-action@v1
+        env:
+          BADGE_LINK: https://img.shields.io/github/actions/workflow/status/junghoon-vans/checkstyle-cli/python-publish.yml
         with:
-          substitutions: "release=v${{ steps.cz.outputs.version }}"
+          substitutions: |
+            'release=v${{ steps.cz.outputs.version }}'
+            'GitHub Workflow Status=${{ env.BADGE_LINK }}?branch=v${{ steps.cz.outputs.version }}'
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_options: "--amend --no-edit"
