@@ -6,12 +6,12 @@ from appdirs import user_cache_dir
 from tqdm import tqdm
 
 
-def download_checkstyle(version: str, fetch_dir: str) -> str:
+def download_checkstyle(fetch_dir: str, version: str = 'latest') -> str:
     """Download checkstyle binary file
 
         Args:
-            version: Checkstyle runtime version
             fetch_dir: Download location
+            version: Checkstyle runtime version
 
         Returns:
             Binary filename

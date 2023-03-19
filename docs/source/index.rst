@@ -37,7 +37,7 @@ Usage
    $ checkstyle .
 
    # run with custom options
-   $ checkstyle -c custom_config.xml --runtime-version 10.3.2 path/to/project
+   $ checkstyle -c custom_config.xml --runtime-version 10.9.2 path/to/project
 
 
 User Guide

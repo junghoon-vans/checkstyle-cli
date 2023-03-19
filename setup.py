@@ -10,7 +10,6 @@ SOURCE_DIR = os.path.join(os.path.dirname(__file__), 'src')
 
 if __name__ == "__main__":   # import checkstyle module
     sys.path.insert(0, SOURCE_DIR)
-    from checkstyle import default_runtime
     from checkstyle.utils.store import download_checkstyle
     from checkstyle.utils.store import get_checkstyle_cache_dir
 
@@ -33,7 +32,6 @@ class FetchBinaries(Command):
             os.makedirs(self.build_dir)
 
         download_checkstyle(
-            version=default_runtime,
             fetch_dir=self.build_dir,
         )
 

@@ -6,7 +6,6 @@ from typing import Optional
 from typing import Sequence
 
 from checkstyle import __version__
-from checkstyle import default_runtime
 
 
 class Parser:
@@ -33,7 +32,7 @@ class Parser:
         self._parser.add_argument(
             "--runtime-version",
             type=str,
-            default=default_runtime,
+            default="latest",
             help="set runtime version of checkstyle.",
         )
         self._parser.add_argument(
