@@ -59,13 +59,13 @@ Description
 
     set ``runtime version`` of checkstyle.
 
-    * default: |DefaultRuntime|
+    * default: 'latest'
 
     Command-line example:
 
     .. parsed-literal::
 
-        $ checkstyle --runtime-version |DefaultRuntime| [files...]
+        $ checkstyle --runtime-version 10.9.2 [files...]
 
 
 .. option:: -d, --debug
