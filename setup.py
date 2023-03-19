@@ -32,7 +32,6 @@ class FetchBinaries(Command):
             os.makedirs(self.build_dir)
 
         download_checkstyle(
-            version='latest',
             fetch_dir=self.build_dir,
         )
 
