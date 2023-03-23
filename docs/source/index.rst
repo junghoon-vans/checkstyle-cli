@@ -21,10 +21,10 @@ If you want **checkstyle-cli** to be used for **pre-commit**, Add this to your `
 .. parsed-literal::
 
    repos:
-  - repo: https://github.com/junghoon-vans/checkstyle-cli
-    rev: |release| # Use the ref you want
-    hooks:
-    - id: checkstyle
+     - repo: https://github.com/junghoon-vans/checkstyle-cli
+       rev: |release| # Use the ref you want
+       hooks:
+       - id: checkstyle
 
 Usage
 -----
