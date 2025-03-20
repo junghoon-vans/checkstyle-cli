@@ -28,8 +28,7 @@ class FetchBinaries(Command):
         self.set_undefined_options('build', ('build_temp', 'build_dir'))
 
     def run(self):
-        if not os.path.exists(self.build_dir):
-            os.makedirs(self.build_dir)
+        os.makedirs(self.build_dir, exist_ok=True)
 
         download_checkstyle(
             fetch_dir=self.build_dir,
