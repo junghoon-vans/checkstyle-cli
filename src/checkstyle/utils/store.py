@@ -69,8 +69,7 @@ def get_checkstyle_cache_dir() -> str:
 
     """
     cache_dir = user_cache_dir('checkstyle')
-    if not os.path.exists(cache_dir):
-        os.makedirs(cache_dir)
+    os.makedirs(cache_dir, exist_ok=True)
     return cache_dir
 
 
