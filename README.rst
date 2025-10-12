@@ -58,4 +58,4 @@ License <https://github.com/junghoon-vans/checkstyle-cli/blob/main/LICENSE>`__
 .. |Documentation Status| image:: https://readthedocs.org/projects/checkstyle-cli/badge/?version=latest
    :target: https://checkstyle-cli.readthedocs.io/en/latest/?badge=latest
 
-.. |release| replace:: v0.7.1
+.. |release| replace:: v0.7.2
